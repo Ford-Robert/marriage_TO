@@ -1,0 +1,65 @@
+---
+title: "Number of Marriages over time in Toronto"
+subtitle: "An in depth analysis of marriage"
+author: 
+  - Robert Ford
+date: today
+date-format: long
+format: pdf
+number-sections: true
+bibliography: references.bib
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(palmerpenguins)
+
+data <- read_csv(here::here ("data/analysis_data/analysis_data.csv"))
+
+
+```
+
+
+# Introduction
+
+This is all about marriages in Toronto
+
+# Data {#sec-data}
+
+Our data details marriage certificates issued from 2011 to 2024, from @opendatatoronto.
+
+```{r}
+#| label: fig-marriage
+#| fig-cap: Marriage Licences Issued Over Time
+#| echo: false
+
+data |>
+  ggplot(aes(x=date, y = marriage_licenses)) +
+  geom_point(color = "blue", size =2)+
+  labs(
+    title = "Marriage Licences Issued Over Time",
+    x = "Date",
+    y = "Number of Marriage Licences") +
+  theme_minimal()
+```
+
+You can see that the number of marriages is increasing year over year. Sadly I have read that divorce rates are also on the rise [TODO INSERT SOURCE]
+
+# Discussion
+
+## First discussion point {#sec-first-point}
+
+From this elaborate paper we can tell that marriages are becoming more common. It would be interesting to explore whether this is a larger portion of the population is getting married, or if individuals are marrying more times.
+
+
+\newpage
+
+
+
+# References
+
+
